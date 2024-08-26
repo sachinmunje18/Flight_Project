@@ -9,18 +9,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Data // Generates getters, setters, toString, equals, and hashCode methods
+@Entity // Marks this class as a JPA entity
+@NoArgsConstructor // Generates a no-argument constructor
+@AllArgsConstructor // Generates a constructor with all arguments
+@Builder // Provides a builder pattern for creating instances
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private String name;
-	private String email;
-	private String password;
+	@Id // Primary key for the entity
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generates the ID
+	private Integer id; // Unique identifier for the user
+
+	private String name; // Name of the user
+	private String email; // Email address of the user
+	private String password; // Password for user authentication
 
 }

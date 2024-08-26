@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AuthPage.css';
 import { toast, ToastContainer } from 'react-toastify';
@@ -45,10 +45,15 @@ function AuthPage() {
         setEmail('');
         setPassword('');
         setConfirmPassword('');
+        // Switch to login form after successful registration
+        setIsLogin(true);
+      } else if (response.status === 409) { // Conflict status code for duplicate email
+        toast.error('This email is already registered. Please log in.');
+        // Switch to login form if the email is already registered
         setIsLogin(true);
       } else {
-        const errorText = await response.text();
-        toast.error('Registration failed: ' + errorText);
+        const errorData = await response.json();
+        toast.error('Registration failed: ' + errorData.message);
       }
     } catch (error) {
       console.error('Error:', error);
@@ -74,15 +79,14 @@ function AuthPage() {
           navigate('/dashboard');
         }, 1000);  // Added delay to ensure toast is shown before navigation
       } else {
-        toast.error('Invalid credentials');
+        const errorData = await response.json();
+        toast.error(errorData.message || 'Invalid credentials');
       }
     } catch (error) {
       console.error('Error:', error);
       toast.error('Something went wrong');
     }
   };
-
- 
 
   return (
     <>
@@ -200,4 +204,4 @@ function AuthPage() {
   );
 }
 
-export default AuthPage;
+export default AuthPage;

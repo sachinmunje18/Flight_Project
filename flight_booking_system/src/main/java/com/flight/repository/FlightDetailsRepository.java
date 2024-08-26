@@ -9,10 +9,13 @@ import com.flight.model.FlightDetails;
 
 import java.util.List;
 
-@Repository
+@Repository // Marks this interface as a Spring Data repository
 public interface FlightDetailsRepository extends JpaRepository<FlightDetails, Long> {
+
+    // Method to find flights based on source, destination, and date
     List<FlightDetails> findBySourceAndDestinationAndDate(String source, String destination, String date);
     
+    // Custom query to find flights with optional parameters
     @Query("SELECT f FROM FlightDetails f WHERE " +
             "(:source IS NULL OR f.source = :source) AND " +
             "(:destination IS NULL OR f.destination = :destination) AND " +
