@@ -1,0 +1,34 @@
+/* body {
+ 
+  background-size: cover;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+ 
+} */
+ 
+.welcome-booking-container {
+  background: url('/public/port2.jpg') no-repeat center center fixed;
+ margin-top: 100px;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .welcome-booking-container h1 {
+    color: #fff;
+  }
+  .welcome-booking-container p{
+    color: #fff;
+  }
+  
+  .welcome-booking-container button {
+    margin-top: 20px;
+  }
+  .btn-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    border-radius: 5px;
+  }
+  

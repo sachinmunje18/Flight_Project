@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: flight-booking-system
+  datasource:
+    url: jdbc:mysql://localhost/flight_booking
+    username: root
+    password: Account@name18
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
